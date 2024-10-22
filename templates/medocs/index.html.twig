@@ -43,7 +43,7 @@
 							{% if medoc.dateExp %}
 								{% set currentDate = date() %}
 								{% if currentDate > medoc.dateExp %}
-									<span class="text-danger">Médicament obsolète</span>
+									<span class="text-danger">Médicament perimé</span>
 								{% else %}
 									{{ medoc.dateExp|date('Y-m-d') }}
 								{% endif %}
