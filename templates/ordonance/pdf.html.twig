@@ -1,0 +1,57 @@
+{# <html>
+    <head>
+        <title>Ordonnance</title>
+    </head>
+    <body>
+        <h1>Ordonnance</h1>
+        <p>Médecin: {{ ordonnance.medecin.nom }}</p>
+        <p>Patient: {{ ordonnance.Patien.nom }}</p>
+       <ul>
+            {% for medoc in medocs %}
+                <li>{{ medoc.nom }}
+                    <ul>
+                        {% for forme in medoc.forme %}
+                            <li>Forme: {{ forme.forme }}</li>
+                        {% endfor %}
+                        {% for dosage in medoc.dosage %}
+                            <li>Dosage: {{ dosage.dosage }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html> #}
+{# templates/ordonnance/pdf.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordonnance</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/flatpickr.min.js') }}"></script>
+</head>
+<body>
+    <h1>Ordonnance</h1>
+    <p>Médecin: {{ ordonnance.medecin.nom }}</p>
+    <p>Patient: {{ ordonnance.Patien.nom }}</p>
+   <ul>
+            {% for medoc in medocs %}
+                <li>{{ medoc.nom }}
+                    <ul>
+                        {% for forme in medoc.forme %}
+                            <li>Forme: {{ forme.forme }}</li>
+                        {% endfor %}
+                        {% for dosage in medoc.dosage %}
+                            <li>Dosage: {{ dosage.dosage }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+</body>
+</html>
+

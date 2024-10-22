@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-md-6">
+		{{ form_row(form.nom)  }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.description)  }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.date_exp)  }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.stock)  }}
+	</div>
+	<div class="col-md-12">
+		{{ form_row(form.photo)  }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.forme)  }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.dosage)  }}
+	</div>
+</div>
+<div class="d-flex gap-1">
+	<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+	<a class="btn btn-success" href="{{ path('app_medocs_index') }}">Retour a la liste</a>
+</div>
+{{ form_end(form) }}
+

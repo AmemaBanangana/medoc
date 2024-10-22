@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medocs index
+<style>
+.expired {
+    background-color: red;
+}
+</style>
+{% endblock %}
+{% block body %}
+	<br>
+	<div class="container">
+		<h1>Liste des Medocs</h1>
+		{{ include('layouts/_flash_message.html.twig') }}
+		<div class="d-flex gap-1">
+			<a class="btn btn-primary" href="{{ path('app_medocs_new') }}">nouveau</a>
+			<h5 class="text-succes">nous avons:
+				<strong>{{nombre}}</strong>
+				medicaments</h5>
+
+		</div>
+		<br>
+		<table class="table">
+			<thead class="bg-dark text-white">
+				<tr>
+					<th class="bg-dark text-white"><input type="checkbox" id="select-all">
+						SelectAll</th>
+					<th class="bg-dark text-white">Nom</th>
+					<th class="bg-dark text-white">Date_exp</th>
+					<th class="bg-dark text-white">Stock</th>
+					<th class="bg-dark text-white"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for medoc in medocs %}
+					<tr>
+						<td>
+							<input type="checkbox" class="toggle-buttons">
+						</td>
+						{# <td>{{ medoc.id }}</td> #}
+						<td>{{ medoc.nom }}</td>
+						<td class="{% if medoc.dateExp and date() > medoc.dateExp %} expired {% endif %}">
+							{% if medoc.dateExp %}
+								{% set currentDate = date() %}
+								{% if currentDate > medoc.dateExp %}
+									<span class="text-danger">Médicament obsolète</span>
+								{% else %}
+									{{ medoc.dateExp|date('Y-m-d') }}
+								{% endif %}
+							{% endif %}
+						</td>
+						<td>
+							{% if medoc.stock > 0 %}
+								{% if medoc.stock > 500 %}
+									{{  medoc.stock }}
+								{% else %}
+									<span class="text-warning">stock insuffisant</span>
+									<span>{{  medoc.stock }}
+										veuillez recharger</span>
+
+								{% endif %}
+							{% else %}
+								<span class="text-danger">stock epuisé</span>
+							{% endif %}
+						</td>
+						<td>
+							<a class="btn btn-outline-primary" style="display: none" ; href="{{ path('app_medocs_show', {'id': medoc.id}) }}">
+								<i class="fas fa-eye"></i>
+							</a>
+							<a class="btn btn-outline-warning" style="display: none" ; href="{{ path('app_medocs_edit', {'id': medoc.id}) }}">
+								<i class="fas fa-edit"></i>
+							</a>
+							<a class="btn btn-outline-info" style="display: none" href="{{ path('app_medocs_add_stock', {'id': medoc.id}) }}">
+								<i class="fas fa-cart-plus"></i>
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Aucun resultat trouve</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+	<script>
+		// Sélectionner/Désélectionner toutes les cases à cocher
+document.getElementById('select-all').addEventListener('change', function () {
+const checkboxes = document.querySelectorAll('.toggle-buttons');
+checkboxes.forEach(checkbox => {
+checkbox.checked = this.checked;
+const buttons = checkbox.closest('tr').querySelectorAll('.btn-outline-primary, .btn-outline-warning, .view-button, .btn-outline-info');
+buttons.forEach(button => {
+button.style.display = this.checked ? 'inline-block' : 'none';
+});
+});
+});
+
+// Afficher/Masquer les boutons en fonction de chaque case à cocher individuelle
+document.querySelectorAll('.toggle-buttons').forEach(checkbox => {
+checkbox.addEventListener('change', function () {
+const buttons = this.closest('tr').querySelectorAll('.btn-outline-primary, .btn-outline-warning, .view-button, .btn-outline-info');
+buttons.forEach(button => {
+button.style.display = this.checked ? 'inline-block' : 'none';
+});
+});
+});
+	</script>
+{% endblock %}

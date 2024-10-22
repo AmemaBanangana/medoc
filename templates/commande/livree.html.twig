@@ -1,0 +1,141 @@
+{# {% extends 'base.html.twig' %}
+
+{% block body %}
+	<br>
+	<div class="container">
+		<h1>Commandes Livrées</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Medicaments</th>
+					<th>Quantite</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for commande in commandes %}
+					<tr>
+
+						{% for medoc in commande.commandeMedicaments %}
+							<td>
+								<ul>
+									<li>
+										{{ medoc.medicament.nom }}
+									</li>
+								</ul>
+							</td>
+						</td>
+						<td>
+							{{ medoc.quantite }}
+						</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>{% endblock %} #}
+{# templates/admin/commandes.html.twig #}
+{# {% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Commandes à Valider</h1>
+
+	{% for commande in commandes %}
+		<ul>
+			<li>
+				Médicaments commandés:
+				{% for medoc in commande.medocs %}
+					{{ medoc.nom }}
+				{% endfor %}
+			</li>
+			<li>Quantité:
+				{{ commande.quantite }}</li>
+			<li>
+				Statut:{{ commande.statut }}</li>
+			<li>
+				<a class="btn btn-outline-primary" href="{{ path('valider_commande', { 'id': commande.id }) }}">Valider</a>
+				<a class="btn btn-outline-danger" href="{{ path('refuser_commande', { 'id': commande.id }) }}">Refuser</a>
+			</li>
+		</ul>
+	{% endfor %}
+{% endblock %} #}
+{% extends 'base.html.twig' %}
+
+	{% block stylesheets %}
+		<style>
+.card {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 15px;
+	margin-bottom: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+	font-size: 1.25em;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.card-body {
+	padding: 10px 0;
+}
+
+.card-footer {
+	text-align: right;
+	margin-top: 10px;
+}
+
+.btn {
+	margin-right: 10px;
+}
+</style>
+{% endblock %}
+
+	{% block body %}
+		<div class="container"> <h1>Commandes livrée(s)</h1>
+		<div class="cards-container">
+			{% for commande in commandes %}
+				<div class="card">
+					<div class="card-header">
+						Commande :{{ commande.id }}
+						
+					</div>
+					<div class="card-body">
+						{# <ul> #}
+                        <table class="table">
+                        <tr>
+                        <thead>
+                        <th>Médicament</th>
+                        <th> Quantité</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+							{% for commandeMedicament in commande.commandeMedicaments %}
+                        <tr>
+								<td>
+                                {# <li> #}
+									
+									{{ commandeMedicament.medicament.nom }}
+									</td>
+                                    <td>                               
+									{{ commandeMedicament.quantite }}
+								{# </li> #}
+                                </td>
+                                </tr>
+							{% endfor %}
+                            </tbody>
+                            
+                            </table>
+						{# </ul> #}
+					</div>
+					{# <div class="card-footer">
+						<a class="btn btn-success" href="{{ path('valider_commande', { 'id': commande.id }) }}">Valider</a>
+						<a class="btn btn-danger" href="{{ path('refuser_commande', { 'id': commande.id }) }}">Refuser</a>
+					</div>
+				</div> #}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+

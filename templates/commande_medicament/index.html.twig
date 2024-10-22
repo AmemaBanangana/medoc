@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandeMedicament index{% endblock %}
+
+{% block body %}
+    <h1>CommandeMedicament index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_medicament in commande_medicaments %}
+            <tr>
+                <td>{{ commande_medicament.id }}</td>
+                <td>{{ commande_medicament.quantite }}</td>
+                <td>
+                    <a href="{{ path('app_commande_medicament_show', {'id': commande_medicament.id}) }}">show</a>
+                    <a href="{{ path('app_commande_medicament_edit', {'id': commande_medicament.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commande_medicament_new') }}">Create new</a>
+{% endblock %}

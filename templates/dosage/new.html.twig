@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Dosage{% endblock %}
+
+{% block body %}
+    <h1>Create new Dosage</h1>
+
+    {{ include('dosage/_form.html.twig') }}
+
+    <a href="{{ path('app_dosage_index') }}">back to list</a>
+{% endblock %}

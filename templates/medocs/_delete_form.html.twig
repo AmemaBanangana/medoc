@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_medocs_delete', {'id': medoc.id}) }}" onsubmit="return confirm('Etes-vous sur de supprimer ce medicament?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ medoc.id) }}">
+    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+</form>

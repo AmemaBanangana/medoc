@@ -1,0 +1,135 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+	<div class="container">
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarScroll">
+			<ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{path('app_home')}}">Home</a>
+				</li>
+				{% if  is_granted("ROLE_ADMIN")  %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Gestion des Patients
+					</a>
+					<ul class="dropdown-menu">
+
+						<li>
+							<a class="dropdown-item " href="{{path('app_medecin_index')}}">Medecin</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_patient_index')}}">Patient
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_register')}}">User
+							</a>
+						</li>
+						<hr class="dropdown-divider">
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Gestion Medicament
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{path('app_medocs_index')}}">Medocs
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_medicament',{'forme':'Comprimé'})}}">Medicaments Comprimés
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_medicament',{'forme':'Sirop'})}}">Medicaments Sirops
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_medicament',{'forme':'Injectable'})}}">Medicaments Injectables</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('medocs_expiring_soon')}}">Medocs encours d'expiration
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_dosage_index')}}">Dosage
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_forme_index')}}">Forme</a>
+						</li>
+				<li class="nav-item">
+				<a class="dropdown-item" href="{{path('app_stock_index')}}">Stock</a>
+				</li>
+					</ul>
+				</li>
+				{% endif %}
+					{% if  is_granted("ROLE_MEDECIN")  %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Ordonance
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{path('app_ordonance_index')}}">Ordonance</a>
+						</li>
+						
+					</ul>
+				</li>
+				{% endif %}
+					{% if  is_granted("ROLE_ADMIN")  %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Commandes
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{path('app_commande_index')}}">faire une Commande</a>
+							<hr class="dropdown-divider">
+							<a class="dropdown-item" href="{{ path('commandes_livree') }}">Commande livrée</a>
+							<hr class="dropdown-divider">
+							<a class="dropdown-item" href="{{ path('commandes_non_livree') }}">Commande non livrée</a>
+							<hr class="dropdown-divider">
+							<a class="dropdown-item" href="{{path('admin_commandes')}}">Commande recues</a>
+							
+						</li>
+					</ul>
+				</li>
+				{% endif %}
+			</ul>
+			<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 50px;">
+			{% if app.user %}
+			<li class="nav-item">
+					<a class="nav-link" href="{{path('app_logout')}}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+				</li>
+				 {% else %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('app_login')}}"><i class="fas fa-sign-in-alt"></i> Login</a>
+				</li>
+				{% endif %}
+			</ul>
+			
+            <ul class="navbar-nav ml-auto">
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            {% if app.user.image %}
+                                <img src="{{ asset('uploads/photos/' ~ app.user.image) }}"  class="rounded-circle" width="30" height="30">
+                            {% endif %}
+                            {{ app.user.medecin.prenom }} {{ app.user.medecin.nom }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    </li>
+                {% endif %}
+				
+            </ul>
+		</div>
+	</div>
+</nav>
+

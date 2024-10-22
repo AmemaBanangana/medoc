@@ -1,0 +1,98 @@
+{# /* <style>
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	th,
+	td {
+		border: 1px solid black;
+		padding: 5px;
+
+	}
+	th {
+		background: #cccccc;
+	}
+	.navbar_nav {
+		list-style: none;
+	}
+    .container{
+        border:2px solid #ccc;
+        border-radius:10px;
+        padding: 10px
+        
+    }
+</style> */ #}
+{# <div class="container">
+	<h2>Ordonnance n:
+		{{ ordonance.id }}</h2>
+	<span>Information sur l'ordonnance</span>
+	<table class="table table-bordered">
+		<tr>
+			<th>Nom du patient</th>
+			<th>Medicament prescrit</th>
+			<th>Medecin</th>
+		</tr>
+		<tr>
+			<td>{{ ordonance.Patien.nom }}</td>
+			<td>
+				<ul class="navbar_nav">
+					{% for medoc in ordonance.medicament %}
+						<li class="nav_item">{{ medoc.nom }}
+							:
+							{% for forme in medoc.forme %}
+
+								{{ forme.forme }}
+							{% endfor %}
+						</li>
+					{% endfor %}
+				</ul>
+			</td>
+			<td>{{ ordonance.medecin.prenom }}</td>
+		</tr>
+	</table>
+</div> #}
+{# templates/bill/pdf.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ordonnance PDF</title>
+    <style>
+        table {width: 100%; border-collapse: collapse;}
+        th, td {border: 1px solid black; padding: 5px;}
+        th {background: #cccccc;}
+        .navbar_nav {list-style: none;}
+        .container {border: 2px solid #ccc; border-radius: 10px; padding: 20px;}
+        .logo {position: absolute; top: 20px; left: 35px; width: 100px; z-index: 1;}
+        .centre{text-align:center; position:relative; bottom:35px; left:37%; background:green; color:#fff; padding: 10px;
+        border-radius:10px; width:25%}
+    </style>
+</head>
+<body>
+
+    <div class="container"><br>
+        <img src="file:///D:/MON_DOSSIER/ELi.jpg" alt="Logo" class="logo"><br><br>
+        <h2 class="centre">Ordonnance n:{{ ordonance.id }}</h2>
+        <span>Information sur l'ordonnance</span>
+        <table class="table table-bordered">
+            <tr>
+                <th>Nom du patient</th>
+                <th>Medicament prescrit</th>
+                <th>Medecin</th>
+            </tr>
+            <tr>
+                <td>{{ ordonance.Patien.nom }}</td>
+                <td>
+                    <ul class="navbar_nav">
+                        {% for medoc in ordonance.medicament %}
+                            <li class="nav_item">{{ medoc.nom }}: {% for forme in medoc.forme %}{{ forme.forme }}{% endfor %}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ ordonance.medecin.prenom }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+

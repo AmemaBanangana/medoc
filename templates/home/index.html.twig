@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil
+{% endblock %}
+
+{% block body %} <br><br>
+	<div class="container"> <br><br>
+		<style>
+			.search-container {
+				display: flex;
+				justify-content: center;
+				/* align-items: center; */
+				height: 100vh; /* Full height */
+				width: 100%;
+				padding: 10px;
+			}
+			.search-form {
+				width: 100%;
+
+			}
+			input {
+				padding: 20px;
+			}
+		</style>
+		<h1>SANTE</h1>
+		<div class="container search-container">
+			<form class="form-inline search-form" action="{{ path('search_medocs') }}" method="get">
+				<div class="d-flex gap-1">
+                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Rechercher une madicament..." aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+                </div>
+			</form>
+		</div>
+
+
+	</div>
+{% endblock %}

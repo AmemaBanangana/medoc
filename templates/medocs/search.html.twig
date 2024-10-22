@@ -1,0 +1,13 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche Médicaments{% endblock %}
+
+{% block body %}
+    <h1>Résultats de la recherche</h1>
+    <ul>
+        {% for medoc in medocs %}
+            <li>{{ medoc.nom }} : {{ medoc.description }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

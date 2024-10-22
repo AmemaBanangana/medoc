@@ -1,0 +1,75 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Medocs{% endblock %}
+
+{% block body %}
+	<br>
+	<div class="container"><br><br>
+		<div class="card mb-3" style="max-width: 540px;">
+			<div class="row g-0">
+				<div class="col-md-4">
+					{% if medoc.photo %}
+						<img  src="{{ asset('uploads/photos/' ~ medoc.photo) }}" class="card-img-top">
+					{% endif %}
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h2 class="card-title">{{ medoc.nom }}</h2>
+						<p> Description: <strong>{{ medoc.description }}</strong></p>
+
+						<p> Date d'expiration: <strong>{{ medoc.dateExp ? medoc.dateExp|date('d-m-Y') : '' }}</strong></p>
+						<div class="d-flex gap-1">
+                        <a class="btn btn-primary" href="{{ path('app_medocs_index') }}">Retour</a>
+
+						<a class="btn btn-warning" href="{{ path('app_medocs_edit', {'id': medoc.id}) }}">Editer</a>
+
+						{{ include('medocs/_delete_form.html.twig') }}
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Medocs{% endblock %}
+
+{% block body %} <br>
+<div class="container">
+    <h1>Medocs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ medoc.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ medoc.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ medoc.description }}</td>
+            </tr>
+            <tr>
+                <th>Date_exp</th>
+                <td>{{ medoc.dateExp ? medoc.dateExp|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex gap-1">
+    <a class="btn btn-primary" href="{{ path('app_medocs_index') }}">back to list</a>
+    <a class="btn btn-warning" href="{{ path('app_medocs_edit', {'id': medoc.id}) }}">edit</a>
+    {{ include('medocs/_delete_form.html.twig') }}
+    </div>
+    </div>
+{% endblock %} #}

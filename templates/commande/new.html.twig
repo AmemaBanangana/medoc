@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Passer une Commande</h1>
+    {{ form_start(form) }}
+        <div id="commande_medicaments"
+             data-prototype="{{ form_widget(form.commandeMedicaments.vars.prototype)|e('html_attr') }}">
+            {{ form_widget(form.commandeMedicaments) }}
+        </div>
+        <button type="button" id="add_item" class="btn btn-secondary">Ajouter un Médicament</button>
+        <button class="btn btn-primary">Commander</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let collectionHolder = document.getElementById('commande_medicaments');
+            let addItemButton = document.getElementById('add_item');
+            let index = collectionHolder.querySelectorAll('input').length;
+
+            addItemButton.addEventListener('click', function() {
+                let newForm = collectionHolder.dataset.prototype;
+                newForm = newForm.replace(/__name__/g, index);
+                index++;
+
+                let newFormDiv = document.createElement('div');
+                newFormDiv.innerHTML = newForm;
+                collectionHolder.appendChild(newFormDiv);
+            });
+        });
+    </script>
+{% endblock %}

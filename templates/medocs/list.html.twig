@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	medocs en
+	{{ forme }}
+{% endblock %}
+{% block body %}
+	<br>
+	<div class="container">
+		<h1> <p class="btn btn-primary">Liste des médicaments<strong class="btn btn-success">{{ forme }}</strong></p>
+			
+		</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>N°</th>
+					<th>Nom</th>
+					<th>Description</th>
+					<th>Date d'expiration</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for medicament in medicaments %}
+					<tr>
+						<td>{{ medicament.id }}</td>
+						<td>{{ medicament.nom }}</td>
+						<td>{{ medicament.description }}</td>
+						<td>{{ medicament.dateExp|date('d/m/Y') }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+{# <a href="{{ path('app_medicament', {'forme': 'Comprimé'}) }}">Comprimés</a>
+<a href="{{ path('app_medicament', {'forme': 'Sirop'}) }}">Sirops</a> #}

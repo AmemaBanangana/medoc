@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordonnance</title>
+    <link rel="stylesheet" href="/assets/bootstrap.min.css">
+</head>
+<body>
+    <h1>Ordonnance</h1>
+    <p>Médecin: {{ ordonnance.medecin.nom }}</p>
+    <p>Patient: {{ordonnance.Patien.nom }}</p>
+    <ul>
+        {% for medoc in ordonnance.medicament %}
+            <li>{{ medoc.nom }} </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

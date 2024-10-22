@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<style>
+		.card {
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 15px;
+			margin-bottom: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.card-header {
+			font-size: 1.25em;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		.card-body {
+			padding: 10px 0;
+		}
+
+		.card-footer {
+			text-align: right;
+			margin-top: 10px;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Commandes</h1>
+        <div class="card-footer">
+						<a class="btn btn-outline-primary" href="{{ path('app_commande_new') }}">Nouvelle Commande</a>
+					</div><br>
+		<div class="cards-container">
+			{% for commande in commandes %}
+				<div class="card">
+					<div class="card-header">
+						Commande
+						{{ commande.id }}
+						 Statut:
+						{{ commande.statut }}
+					</div>
+					<div class="card-body">
+						<ul>
+							{% for commandeMedicament in commande.commandeMedicaments %}
+								<li>
+									Médicament:
+									{{ commandeMedicament.medicament.nom }},
+								Quantité:{{ commandeMedicament.quantite }}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+                    <div class="card-footer">
+					{{ include('commande/_delete_form.html.twig') }}
+                    </div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

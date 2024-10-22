@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Medocs{% endblock %}
+
+{% block body %}
+    <h1>Create new Medocs</h1>
+
+    {{ include('medocs/_form.html.twig') }}
+
+    {# <a href="{{ path('app_medocs_index') }}">back to list</a> #}
+{% endblock %}

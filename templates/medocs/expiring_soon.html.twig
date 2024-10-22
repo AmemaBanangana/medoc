@@ -1,0 +1,65 @@
+{# templates/medocs/expiring_soon.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Médicaments Expirant Bientôt
+{% endblock %}
+
+{% block body %}
+	<h1>Médicaments Expirant dans un Mois</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				
+				<th>Nom</th>
+				<th>forme</th>
+				<th>Date d'expiration</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for medoc in medocss %}
+				<tr>
+					<td>
+						{{ medoc.nom }}
+					</td>
+					<td>
+                    {% for forme in medoc.forme %}
+						{{ forme.forme }}
+                    {% endfor %}
+					</td>
+					<td>
+						{{ medoc.dateExp|date('d/m/Y') }}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h1>Médicaments Expirant dans deux Mois</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				
+				<th>Nom</th>
+				<th>forme</th>
+				<th>Date d'expiration</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for med in medoc %}
+				<tr>
+					<td>
+						{{ med.nom }}
+					</td>
+					<td>
+                    {% for forme in med.forme %}
+						{{ forme.forme }}
+                    {% endfor %}
+					</td>
+					<td>
+						{{ med.dateExp|date('d/m/Y') }}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

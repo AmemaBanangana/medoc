@@ -1,0 +1,52 @@
+body {
+    
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 18px;
+   
+}
+
+.forme{
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 50px 40px;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@media (max-width:750px){
+    .login-container {
+               
+        min-height: 100vh;
+        display:block;
+        align-items: center;
+        justify-content: center;
+      
+    }
+    .login-form {
+        width: 20%;
+        padding: 2rem;
+    }
+    .login-image {
+        background: url('/images/illustration-concept-ligne-securite-donnees-cyber-securite-internet-confidentialite-informations-protection_1150-37328.jpg') no-repeat center center;
+        background-size: cover;
+        width: 20%;
+        height: 100vh;
+    }
+}
+

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	ajout stock
+{% endblock %}
+
+{% block body%}
+	<br>
+	<br>
+	<div class="container">
+		<h1>Ajout de stocke pour:{{medocs.nom}} </h1>
+        {{ include('layouts/_flash_message.html.twig') }}
+		{{ form_start(form) }}
+		{{ form_row(form.Qte,{'attr':{'class':'form-control'}}) }}
+        <div class="d-flex gap-1">
+	<input type="submit" class="btn btn-success btn-block" >
+		{{ form_end(form) }}
+	<a class="btn btn-success" href="{{ path('app_medocs_index') }}">Retour a la liste</a>
+</div>
+	</div>
+{% endblock %}

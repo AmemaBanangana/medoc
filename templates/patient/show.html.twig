@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patient
+{% endblock %}
+
+{% block body %}
+	<br>
+	<div class="container"><br><br>
+		<div class="card mb-3" style="max-width: 540px;">
+			<div class="row g-0">
+				<div class="col-md-4">
+					{% if patient.photo %}
+						<img  src="{{ asset('uploads/photos/' ~ patient.photo) }}" class="card-img-top">
+					{% endif %}
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h2 class="card-title">{{ patient.prenom }}</h2>
+						<p> Nom: <strong>{{ patient.nom }}</strong></p>
+
+						<p> Date de naissance: <strong>{{ patient.dateNaissance ? patient.dateNaissance|date('d-m-Y') : '' }}</strong></p>
+
+						<p> Contact: <strong>{{ patient.phone }}</strong></p>
+
+						<p> Adresse E-mail: <strong>{{ patient.email }}</strong></p>
+						{# {% endfor %} #}
+
+						<div class="d-flex gap-1">
+                        <a class="btn btn-primary" href="{{ path('app_patient_index') }}">Retour</a>
+
+						<a class="btn btn-warning" href="{{ path('app_patient_edit', {'id': patient.id}) }}">Editer</a>
+
+						{{ include('patient/_delete_form.html.twig') }}
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
