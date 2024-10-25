@@ -37,6 +37,8 @@ class Medecin
 
    
 
+   
+
     public function __construct()
     {
         $this->ordonances = new ArrayCollection();
@@ -125,6 +127,7 @@ class Medecin
 
         return $this;
     }
+
 
 
 
