@@ -39,7 +39,7 @@ Notifications en cas de seuils critiques de stock et expiration de medicament
 ## Page de la prescription de medicament
 ![Ordonnance](docs/images/Ordonnance.png)
 
-## Page de medicament encours d'expiration
+## Page de la liste des medicaments encours d'expiration
 ![medocs en expiration ](docs/images/expiration_medocs.png)
 
 ## Page pour passer de commande
