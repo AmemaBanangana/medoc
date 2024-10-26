@@ -27,9 +27,7 @@ passer des commandes en cas d'insuffissance au stock
 Gestion des prescriptions
 
 Notifications en cas de seuils critiques de stock et expiration de medicament
+## apperçue de la page de gestion de medica,ent
+![image de page de gesion de medicament](https://github.com/AmemaBanangana/medoc/tree/master/docs/images/image.png)
 
-![alt text](image.png)
 
-
-Contributions
-Les contributions sont les bienvenues ! Veuillez ouvrir une issue avant de soumettre une pull request.
