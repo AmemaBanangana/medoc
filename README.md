@@ -47,3 +47,13 @@ Notifications en cas de seuils critiques de stock et expiration de medicament
 
 ## Page pour validation de commande
 ![valider la commande](docs/images/valider_commande.png)
+
+## Contributions
+Les contributions sont les bienvenues ! 
+
+
+
+### Auteur
+Nom : Joseph Amema
+
+Email : josephamema27@gmail.com
