@@ -30,4 +30,8 @@ Notifications en cas de seuils critiques de stock et expiration de medicament
 ## apperçue de la page de gestion de medica,ent
 ![image de page de gesion de medicament](https://github.com/AmemaBanangana/medoc/tree/master/docs/images/image.png)
 
+## apercue de la page de connexion
+![page de connexon](https://github.com/AmemaBanangana/medoc/tree/master/docs/images/page_connexion.png)
 
+## appercue de de la page de medicament selectionnés selon la forme(Comprimé)
+![ medicament Comprime](docs/images/comprime.png)
