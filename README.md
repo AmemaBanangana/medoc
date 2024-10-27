@@ -48,6 +48,9 @@ Notifications en cas de seuils critiques de stock et expiration de medicament
 ## Page pour validation de commande
 ![valider la commande](docs/images/valider_commande.png)
 
+## Diagramme de classe
+![diagramme pour la structure de la base de donnees](docs/images/DIagramme.png)
+
 ## Contributions
 Les contributions sont les bienvenues ! 
 
